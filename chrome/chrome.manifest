@@ -1,0 +1,5 @@
+content globalextensionmanager content/
+resource globalextensionmanager content/
+#override resource://gre/modules/AddonRepository.jsm content/AddonRepository.jsm
+#override chrome://gre/modules/AddonRepository.jsm content/AddonRepository.jsm
+locale branding en-US locale/branding/

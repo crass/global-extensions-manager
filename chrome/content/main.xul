@@ -1,0 +1,76 @@
+<?xml version="1.0"?>
+
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+
+<window xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml"
+        id="main" title="Global Extension Manager" context="actions"
+        width="600" height="550"
+        persist="width height screenX screenY sizemode"
+        onload="mainInit();">
+
+  <popupset>
+    <menupopup id="actions">
+      <menuitem label="Open Debugger..." oncommand="openVenkman();"/>
+    <!--
+      <menuitem label="Bus" selected="true"/>
+      <menuitem label="Train"/>
+      -->
+    </menupopup>
+  </popupset>
+
+  <script src="chrome://venkman/content/venkman-overlay.js" />
+  <script type="application/javascript" src="chrome://globalextensionmanager/content/debugger.js"/>
+  <script type="application/javascript" src="chrome://globalextensionmanager/content/main.js"/>
+
+<toolbox flex="0">
+  <menubar id="main-menubar">
+    <menu id="file-menu" label="File">
+      <menupopup id="file-popup">
+      <!--
+        <menuitem label="New"/>
+        <menuitem label="Open"/>
+        <menuitem label="Save"/>
+        <menuseparator/>
+        -->
+        <menuitem label="Exit" oncommand="goQuitApplication();"/>
+      </menupopup>
+    </menu>
+    <menu id="help-menu" label="Help">
+      <menupopup id="help-popup">
+        <menuitem label="About"/>
+      </menupopup>
+    </menu>
+  </menubar>
+</toolbox>
+
+  <hbox>
+    <!-- Input for overriding -->
+    <menulist id="app">
+      <menupopup>
+        <menuitem label="Firefox" value="{ec8030f7-c20a-464f-9b0e-13a3a9e97384}" selected="true"/>
+        <menuitem label="Thunderbird" value="{3550f703-e582-4d05-9a08-453d09bdfdc6}"/>
+        <menuitem label="Seamonkey"/>
+      </menupopup>
+    </menulist>
+
+    <label value="version:"/>
+    <textbox id="app-version" value=""/> 
+  </hbox>
+
+<!--
+  <caption label="Hello World???"/>
+  <separator/>
+  <button label="More >>" oncommand="showMore();"/>
+  <separator/>
+  <description id="more-text" hidden="true">This is a simple XULRunner application. XUL is simple to use and quite powerful and can even be used on mobile devices.</description>
+  <xhtml:a href="chrome://mozapps/content/extensions/extensions.xul?type=extensions">Go to addons (real)</xhtml:a>
+  -->
+<!--
+  <xhtml:iframe id="extension" flex="1"
+                src="chrome://mozapps/content/extensions/extensions.xul?type=extensions"></xhtml:iframe>
+ -->
+  <xhtml:iframe id="extension" flex="1"
+                src="chrome://globalextensionmanager/content/extensions.xul?type=extensions"></xhtml:iframe>
+</window>
+
